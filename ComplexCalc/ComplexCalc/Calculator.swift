@@ -14,16 +14,16 @@ class Calculator {
         return lhs + rhs
     }
     
-    public func add(_ args : [Int]) -> Int {
-        var sum = 0
-        for i in args {
-            sum += i
-        }
-        return sum
-    }
-    
     public func add(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
         return (lhs.0 + rhs.0, lhs.1 + rhs.1)
+    }
+    
+    public func add(_ args : [Int]) -> Int {
+        var total = 0
+        for i in args {
+            total += i
+        }
+        return total
     }
     
     public func add(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
@@ -49,31 +49,17 @@ class Calculator {
     public func multiply(_ args: [Int]) -> Int {
         if (args.count == 0) {
             return 0
-            
         }
-        var sum = 1
+        var total = 1
         
         for i in args{
-            sum *= i
+            total *= i
         }
-        return sum
+        return total
     }
     
     public func divide(lhs: Int, rhs: Int) -> Int {
         return lhs / rhs
-    }
-    
-    public func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
-        return op(lhs, rhs)
-    }
-    
-    public func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
-        var sum = beg
-        
-        for i in args{
-            sum = op(sum, i)
-        }
-        return sum
     }
     
     public func count(_ args: [Int]) -> Int {
@@ -81,11 +67,22 @@ class Calculator {
     }
     
     public func avg(_ args: [Int]) -> Int {
-        var sum = 0
-        
+        var total = 0
         for i in args {
-            sum += i
+            total += i
         }
-        return sum / args.count
+        return total / args.count
+    }
+    
+    public func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
+        return op(lhs, rhs)
+    }
+    
+    public func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
+        var total = beg
+        for i in args{
+            total = op(total, i)
+        }
+        return total
     }
 }
